@@ -1,0 +1,133 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Neo-Swiss International Palette (Naija Federation Edition) */
+  --color-background: #F4F4F0;
+  /* Paper / Off-White */
+  --color-foreground: #111111;
+  /* Ink Black */
+  --color-primary: #008751;
+  /* Official Nigerian Green */
+  --color-secondary: #000000;
+  /* Deep Black (Secondary) */
+  --color-surface: #EAEAE5;
+  /* Slightly Darker Paper */
+  --color-border: #111111;
+  /* Hard Borders */
+
+  /* Modernist Typography */
+  --font-display: var(--font-space);
+  /* Space Grotesk (Bold) */
+  --font-body: var(--font-outfit);
+  /* Inter Alternative (Regular) */
+
+  --radius-none: 0;
+  --radius-xs: 0;
+}
+
+:root {
+  --background: #F4F4F0;
+  --foreground: #111111;
+  --primary: #008751;
+  --secondary: #000000;
+}
+
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display), sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+}
+
+@layer utilities {
+
+  /* Swiss Grid System */
+  .swiss-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0;
+  }
+
+  /* Hard Borders */
+  .border-hard {
+    border: 1px solid var(--foreground);
+  }
+
+  .border-r-hard {
+    border-right: 1px solid var(--foreground);
+  }
+
+  .border-b-hard {
+    border-bottom: 1px solid var(--foreground);
+  }
+
+  .border-t-hard {
+    border-top: 1px solid var(--foreground);
+  }
+
+  .border-l-hard {
+    border-left: 1px solid var(--foreground);
+  }
+
+  /* Typography Utilities */
+  .text-swiss-xl {
+    font-size: 8rem;
+    line-height: 0.8;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+  }
+
+  /* Interactive States */
+  .hover-invert {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .hover-invert:hover {
+    background-color: var(--foreground);
+    color: var(--background);
+  }
+
+  .hover-green {
+    transition: all 0.3s ease;
+  }
+
+  .hover-green:hover {
+    background-color: var(--primary);
+    color: var(--background);
+    border-color: var(--primary);
+  }
+
+  /* Marquee Animation */
+  .animate-swiss-marquee {
+    animation: swissMarquee 20s linear infinite;
+  }
+
+  @keyframes swissMarquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
