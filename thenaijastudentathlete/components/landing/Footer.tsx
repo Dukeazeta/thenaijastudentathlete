@@ -29,7 +29,7 @@ export function Footer() {
                 {/* Links Col 2 */}
                 <div className="flex flex-col gap-4">
                     <span className="font-body text-xs text-primary font-bold uppercase tracking-widest mb-2">Official</span>
-                    {["Partner Apply", "Scout Login", "Legal", "Credits"].map((l) => (
+                    {["Partner Apply", "The Team", "Legal", "Credits"].map((l) => (
                         <Link key={l} href="#" className="font-display text-xl uppercase tracking-tight hover:text-primary transition-colors">
                             {l}
                         </Link>
@@ -55,7 +55,7 @@ export function Footer() {
 
             {/* Bottom Meta */}
             <div className="mt-24 px-6 lg:px-12 pt-8 border-t border-white/20 flex flex-col md:flex-row justify-between items-center font-body text-[10px] uppercase tracking-widest opacity-40">
-                <span>(C) 2024 The Naija Student Athlete. All Rights Reserved.</span>
+                <span>(C) 2026 The Naija Student Athlete. All Rights Reserved.</span>
                 <div className="flex gap-8 mt-4 md:mt-0">
                     <span>Lagos</span>
                     <span>Abuja</span>

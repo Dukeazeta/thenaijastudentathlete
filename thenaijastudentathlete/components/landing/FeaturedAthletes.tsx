@@ -65,42 +65,43 @@ export function FeaturedAthletes() {
             {/* The Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 {athletes.map((athlete, i) => (
-                    <motion.div
-                        key={athlete.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                        className="group relative border-r-hard border-b-hard aspect-[3/4] overflow-hidden"
-                    >
-                        {/* Image Layer */}
-                        <div className="absolute inset-0 bg-surface">
-                            <img
-                                src={athlete.image}
-                                alt={athlete.name}
-                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                            />
-                            {/* Green Flash Overlay (Desktop Only) */}
-                            <div className="absolute inset-0 bg-primary mix-blend-multiply opacity-0 lg:group-hover:opacity-60 transition-opacity duration-300" />
-                        </div>
+                    <Link key={athlete.id} href={`/roster/view/${athlete.id}`} className="contents">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                            className="group relative border-r-hard border-b-hard aspect-[3/4] overflow-hidden block"
+                        >
+                            {/* Image Layer */}
+                            <div className="absolute inset-0 bg-surface">
+                                <img
+                                    src={athlete.image}
+                                    alt={athlete.name}
+                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                />
+                                {/* Green Flash Overlay (Desktop Only) */}
+                                <div className="absolute inset-0 bg-primary mix-blend-multiply opacity-0 lg:group-hover:opacity-60 transition-opacity duration-300" />
+                            </div>
 
-                        {/* Info Card Slide-Up (Always visible on mobile) */}
-                        <div className="absolute inset-0 flex flex-col justify-end p-6">
-                            <div className="bg-background border-hard p-4 lg:translate-y-4 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 transition-all duration-300 opacity-100 translate-y-0 shadow-xl lg:shadow-none">
-                                <span className="font-body text-[10px] uppercase tracking-widest text-primary block mb-1">{athlete.sport} // {athlete.stat}</span>
-                                <h3 className="font-display text-2xl uppercase tracking-tight leading-none">{athlete.name}</h3>
-                                <div className="mt-4 pt-3 border-t-hard flex justify-between items-center">
-                                    <span className="font-body text-[10px] uppercase opacity-60">{athlete.school}</span>
-                                    <span className="font-display text-sm">↗</span>
+                            {/* Info Card Slide-Up (Always visible on mobile) */}
+                            <div className="absolute inset-0 flex flex-col justify-end p-6">
+                                <div className="bg-background border-hard p-4 lg:translate-y-4 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 transition-all duration-300 opacity-100 translate-y-0 shadow-xl lg:shadow-none">
+                                    <span className="font-body text-[10px] uppercase tracking-widest text-primary block mb-1">{athlete.sport} // {athlete.stat}</span>
+                                    <h3 className="font-display text-2xl uppercase tracking-tight leading-none">{athlete.name}</h3>
+                                    <div className="mt-4 pt-3 border-t-hard flex justify-between items-center">
+                                        <span className="font-body text-[10px] uppercase opacity-60">{athlete.school}</span>
+                                        <span className="font-display text-sm">↗</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        {/* Static Index Number */}
-                        <div className="absolute top-0 left-0 p-4 font-display text-6xl text-white mix-blend-overlay opacity-80 lg:opacity-50 lg:group-hover:opacity-100 transition-opacity">
-                            0{i + 1}
-                        </div>
-                    </motion.div>
+                            {/* Static Index Number */}
+                            <div className="absolute top-0 left-0 p-4 font-display text-6xl text-white mix-blend-overlay opacity-80 lg:opacity-50 lg:group-hover:opacity-100 transition-opacity">
+                                0{i + 1}
+                            </div>
+                        </motion.div>
+                    </Link>
                 ))}
             </div>
 
