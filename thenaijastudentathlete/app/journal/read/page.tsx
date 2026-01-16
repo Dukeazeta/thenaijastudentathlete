@@ -63,7 +63,7 @@ export default function ArticlePage() {
                             </p>
                         </div>
                         <p className="font-body text-lg leading-relaxed opacity-80 mb-6">
-                            The pilot phase of this program begins in Q2 2024, focusing on Track & Field and Basketball. Representatives from international collegiate federations have already expressed interest in the inaugural data set that will be produced from this combine.
+                            The pilot phase of this program begins in Q2 2026, focusing on Track & Field and Basketball. Representatives from international collegiate federations have already expressed interest in the inaugural data set that will be produced from this combine.
                         </p>
                         <p className="font-body text-lg leading-relaxed opacity-80">
                             Further updates regarding the specific schools selected for the pilot will be released in the coming weeks via the official gazette.

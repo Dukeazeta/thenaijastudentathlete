@@ -1,22 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { Event } from "@/db/schema";
 
-interface Event {
-    id: number;
-    day: string;
-    month: string;
-    title: string;
-    location: string;
-    status: string;
+interface EventsProps {
+    events?: Event[];
 }
 
-const events: Event[] = [
+// Fallback demo events when database is empty
+const fallbackEvents = [
     {
         id: 1,
         day: "14",
         month: "FEB",
-        status: "Open Reg.",
+        type: "Open Reg.",
         title: "Prep Combine",
         location: "Lagos, NG",
     },
@@ -24,7 +21,7 @@ const events: Event[] = [
         id: 2,
         day: "02",
         month: "MAR",
-        status: "Closed",
+        type: "Closed",
         title: "Scholarship Expo",
         location: "Abuja, NG",
     },
@@ -32,13 +29,25 @@ const events: Event[] = [
         id: 3,
         day: "18",
         month: "APR",
-        status: "Invite Only",
+        type: "Invite Only",
         title: "Track Invitational",
         location: "Unilag, NG",
     },
 ];
 
-export function Events() {
+export function Events({ events }: EventsProps) {
+    // Use database events if available, otherwise fallback
+    const displayEvents = events && events.length > 0
+        ? events.map(e => ({
+            id: e.id,
+            day: e.day,
+            month: e.month.split(' ')[0]?.toUpperCase().slice(0, 3) || e.month, // "February 2025" -> "FEB"
+            type: e.type,
+            title: e.title,
+            location: e.location,
+        }))
+        : fallbackEvents;
+
     return (
         <section id="schedule" className="bg-primary text-white border-b-hard overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[60vh]">
@@ -50,13 +59,13 @@ export function Events() {
                     </h2>
                     <div className="mt-8 lg:mt-12 font-body text-sm uppercase tracking-wide opacity-80 border-t border-white/20 pt-8">
                         <p>All dates subject to federation approval.</p>
-                        <p>Phase 2 Registration is Active.</p>
+                        <p>Phase 1 Registration is Active.</p>
                     </div>
                 </div>
 
                 {/* Right: The Timeline Grid */}
                 <div className="col-span-1 lg:col-span-8 bg-background text-foreground">
-                    {events.map((e, i) => (
+                    {displayEvents.map((e, i) => (
                         <motion.div
                             key={e.id}
                             initial={{ opacity: 0, x: 20 }}
@@ -71,12 +80,12 @@ export function Events() {
                                     <span className="font-display text-4xl lg:text-5xl">{e.day}</span>
                                     <span className="font-body text-xs font-bold uppercase tracking-widest opacity-60 md:mt-1">{e.month}</span>
                                 </div>
-                                <span className="md:hidden font-body text-[10px] uppercase font-bold text-primary">{e.status}</span>
+                                <span className="md:hidden font-body text-[10px] uppercase font-bold text-primary">{e.type}</span>
                             </div>
 
                             {/* Info Block */}
                             <div className="md:col-span-6 lg:col-span-7 flex flex-col justify-center px-6 py-6 md:px-8">
-                                <span className="hidden md:block font-body text-[10px] uppercase tracking-widest text-primary font-bold mb-1 group-hover:text-foreground">{e.status}</span>
+                                <span className="hidden md:block font-body text-[10px] uppercase tracking-widest text-primary font-bold mb-1 group-hover:text-foreground">{e.type}</span>
                                 <h3 className="font-display text-3xl lg:text-4xl uppercase tracking-tight">{e.title}</h3>
                             </div>
 

@@ -70,7 +70,7 @@ export function Navbar() {
                                     NGR
                                 </div>
                                 <div className="flex justify-between font-body text-xs uppercase tracking-widest opacity-60">
-                                    <span>Ref. 2024-V1</span>
+                                    <span>Ref. 2026-V1</span>
                                     <span>Official Grid</span>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@ export function Navbar() {
                         {/* Footer Info Bar */}
                         <div className="grid grid-cols-4 border-t-hard h-16 divide-x divide-black text-[10px] sm:text-xs font-body uppercase tracking-wider text-center items-center bg-white text-foreground">
                             <div className="py-4">Lagos</div>
-                            <div className="py-4">2024</div>
+                            <div className="py-4">2026</div>
                             <div className="py-4 text-primary font-bold">Online</div>
                             <div className="py-4 cursor-pointer hover:bg-foreground hover:text-white transition-colors" onClick={() => setIsOpen(false)}>Close</div>
                         </div>

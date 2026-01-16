@@ -30,7 +30,11 @@ export function Footer() {
                 <div className="flex flex-col gap-4">
                     <span className="font-body text-xs text-primary font-bold uppercase tracking-widest mb-2">Official</span>
                     {["Partner Apply", "The Team", "Legal", "Credits"].map((l) => (
-                        <Link key={l} href="#" className="font-display text-xl uppercase tracking-tight hover:text-primary transition-colors">
+                        <Link
+                            key={l}
+                            href={l === "The Team" ? "/teams" : "#"}
+                            className="font-display text-xl uppercase tracking-tight hover:text-primary transition-colors"
+                        >
                             {l}
                         </Link>
                     ))}

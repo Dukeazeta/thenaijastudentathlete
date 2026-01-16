@@ -18,7 +18,7 @@ export function Hero() {
 
           {/* Poster Header */}
           <div className="flex justify-between items-start text-white mix-blend-screen">
-            <span className="font-body text-xs uppercase tracking-[0.2em] border border-white px-2 py-1">Vol. 01 — 2024</span>
+            <span className="font-body text-xs uppercase tracking-[0.2em] border border-white px-2 py-1">Vol. 01 — 2026</span>
             <div className="flex flex-col text-right">
               <span className="font-display text-lg leading-none">THE NAIJA</span>
               <span className="font-display text-lg leading-none">STUDENT ATHLETE</span>
@@ -56,7 +56,7 @@ export function Hero() {
         <div className="col-span-1 lg:col-span-5 relative overflow-hidden bg-black">
           <motion.div style={{ y }} className="relative w-full h-[120%]">
             <img
-              src="https://images.unsplash.com/photo-1606166325683-e6eb69d2067d?auto=format&fit=crop&q=80&w=2400"
+              src="/hero_athlete_sprint.png"
               alt="Athlete Sprint Start"
               className="w-full h-full object-cover grayscale contrast-125"
             />

@@ -2,40 +2,49 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import type { Post } from "@/db/schema";
 
-interface Highlight {
-  id: number;
-  title: string;
-  category: string;
-  date: string;
-  image: string;
+interface HighlightsProps {
+  posts?: Post[];
 }
 
-const highlights: Highlight[] = [
+// Fallback demo highlights when database is empty
+const fallbackHighlights = [
   {
-    id: 1,
+    id: "1",
     title: "Lagos Combine",
     category: "Scouting Report",
-    date: "JAN 2024",
+    date: "JAN 2026",
     image: "https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&q=80&w=1200",
   },
   {
-    id: 2,
+    id: "2",
     title: "Ibadan Track Open",
     category: "Performance Data",
-    date: "FEB 2024",
+    date: "FEB 2026",
     image: "https://images.unsplash.com/photo-1461896756913-c9540802curr?auto=format&fit=crop&q=80&w=1200",
   },
   {
-    id: 3,
+    id: "3",
     title: "Scholarship Finals",
     category: "Placement Log",
-    date: "MAR 2024",
+    date: "MAR 2026",
     image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&q=80&w=1200",
   },
 ];
 
-export function Highlights() {
+export function Highlights({ posts }: HighlightsProps) {
+  // Use database posts if available, otherwise fallback
+  const displayHighlights = posts && posts.length > 0
+    ? posts.map(p => ({
+      id: p.id,
+      title: p.title,
+      category: p.category,
+      date: p.date,
+      image: "https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&q=80&w=1200", // Default image
+    }))
+    : fallbackHighlights;
+
   return (
     <section id="journal" className="bg-background border-b-hard py-20 px-6 lg:px-12">
 
@@ -50,7 +59,7 @@ export function Highlights() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12">
-        {highlights.map((h, i) => (
+        {displayHighlights.map((h, i) => (
           <motion.div
             key={h.id}
             initial={{ opacity: 0, scale: 0.95 }}
